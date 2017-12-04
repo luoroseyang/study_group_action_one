@@ -19,5 +19,7 @@ export const GET_ALL_TAGS = 'GET_ALL_TAGS'
 export const TOGGLE_SELECT_TAG = 'TOGGLE_SELECT_TAG'
 export const CLEAR_SELECT_TAG = 'CLEAR_SELECT_TAG'
 //page
+export const SET_CUR_PAGE = 'SET_CUR_PAGE'
+export const SET_ALL_PAGE = 'SET_ALL_PAGE'
 export const GET_ALL_PAGE = 'GET_ALL_PAGE'
 export const GET_CUR_PAGE = 'GET_CUR_PAGE'
