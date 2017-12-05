@@ -1,7 +1,7 @@
 import fs from 'fs'
 let config = {
   app: {
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 8889,
     baseApi: '/api'
   },
   mongodb: {
@@ -15,8 +15,8 @@ let config = {
     pass: ''
   },
   admin: {  //后台初始化的用户名密码
-  	user: 'admin',
-  	pwd: 'password'
+  	user: 'xiaobo',
+  	pwd: 'study111'
   }
 }
 // 可在private.js定义自己私有的配置
