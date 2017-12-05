@@ -17,9 +17,7 @@
             <p class="list__article__item__time">{{article.createTime}}</p>
             <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
             <!-- <span v-for="tag in article.tags"> {{tag.name}}</span> -->
-            <p>
-              <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
-            </p>
+            <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
           </div>
         </li>
         <Pagination :curPage='curPage' :allPage='allPage' @changePage='changePage'></Pagination>
@@ -87,11 +85,11 @@ export default {
       this.isLoading = false;
     })
   },
-  // preFetch(store) {
-  //   store.dispatch('getAllTags')
-  //   return store.dispatch('getAllPosts',{page:store.state.route.params.page}).then(()=>{
-  //   })
-  // },
+  preFetch(store) {
+    store.dispatch('getAllTags')
+    return store.dispatch('getAllPosts',{page:store.state.route.params.page}).then(()=>{
+    })
+  },
   methods: {
     ...mapActions([
       'getAllPosts',
