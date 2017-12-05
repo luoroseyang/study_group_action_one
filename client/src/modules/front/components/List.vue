@@ -17,7 +17,9 @@
             <p class="list__article__item__time">{{article.createTime}}</p>
             <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
             <!-- <span v-for="tag in article.tags"> {{tag.name}}</span> -->
-            <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
+            <p>
+              <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
+            </p>
           </div>
         </li>
         <Pagination :curPage='curPage' :allPage='allPage' @changePage='changePage'></Pagination>

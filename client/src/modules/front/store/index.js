@@ -26,7 +26,7 @@ export function createStore() {
       getAllPosts({ commit, state }, { tag = '', page = 1, limit = 5 } = {}) {
 
         return articleApi.getAllPublishArticles(tag, page, limit).then(res => {
-          commit('GET_ALL_POSTS', { posts: res.data.articleArr, allPage: res.data.allPage, curPage: page });
+          commit('GET_ALL_POSTS', { posts: res.data.articleArr || [], allPage: res.data.allPage, curPage: page });
           return new Promise((resolve, reject) => {
             resolve(res);
           });
