@@ -10,6 +10,20 @@
         <span>{{filterMsg}}</span>
         分类
       </li>
+      <template v-if="posts.length!==0 && isLoading == false">
+        <li v-for="(article, index) in posts" class="list__article__item">
+          <h1 class="list__article__item__title"><router-link :to="'article/'+article.id">{{ article.title }}</router-link></h1>
+          <div class="list__article__item__info">
+            <p class="list__article__item__time">{{article.createTime}}</p>
+            <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
+            <!-- <span v-for="tag in article.tags"> {{tag.name}}</span> -->
+            <p>
+              <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
+            </p>
+          </div>
+        </li>
+        <Pagination :curPage='curPage' :allPage='allPage' @changePage='changePage'></Pagination>
+      </template>
       <div v-if="posts.length==0 && isLoading==false" class="msg-box">
         <p>暂时没有相关文章</p>
       </div>
@@ -73,11 +87,11 @@ export default {
       this.isLoading = false;
     })
   },
-  preFetch(store) {
-    store.dispatch('getAllTags')
-    return store.dispatch('getAllPosts',{page:store.state.route.params.page}).then(()=>{
-    })
-  },
+  // preFetch(store) {
+  //   store.dispatch('getAllTags')
+  //   return store.dispatch('getAllPosts',{page:store.state.route.params.page}).then(()=>{
+  //   })
+  // },
   methods: {
     ...mapActions([
       'getAllPosts',
