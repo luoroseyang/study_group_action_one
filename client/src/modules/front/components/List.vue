@@ -7,23 +7,9 @@
     <ul class="list__article">
       <li class="list__article__filterMsg" v-if="(selectTags.length !== 0)">
         筛选
-        <span>{{filterMsg}}</span> 
+        <span>{{filterMsg}}</span>
         分类
       </li>
-      <template v-if="posts.length!==0 && isLoading == false">
-        <li v-for="(article, index) in posts" class="list__article__item">
-          <h1 class="list__article__item__title"><router-link :to="'article/'+article.id">{{ article.title }}</router-link></h1>
-          <div class="list__article__item__info">
-            <p class="list__article__item__time">{{article.createTime}}</p>
-            <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
-            <!-- <span v-for="tag in article.tags"> {{tag.name}}</span> -->
-            <p>
-              <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
-            </p>
-          </div>
-        </li>
-        <Pagination :curPage='curPage' :allPage='allPage' @changePage='changePage'></Pagination>
-      </template>
       <div v-if="posts.length==0 && isLoading==false" class="msg-box">
         <p>暂时没有相关文章</p>
       </div>
@@ -135,7 +121,7 @@ export default {
     margin 0 auto
     padding 0px 10px 10px 10px
     margin-bottom 15px
-    
+
   &__article__item__title
     font-size 24px
     word-break break-all
@@ -175,8 +161,8 @@ export default {
     margin-top  -(@height/2)+60
     text-align center
     color #bfbfbf
-    
-@media screen and (max-width: 850px) 
+
+@media screen and (max-width: 850px)
   .list
     position relative
     padding-top 80px
@@ -198,5 +184,5 @@ export default {
       left 50%
       width 300px
       margin-left -(@width/2)
-    
+
 </style>

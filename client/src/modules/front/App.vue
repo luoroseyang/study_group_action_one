@@ -4,6 +4,10 @@
       <Top></Top>
       <transition name="fade" mode="out-in">
         <!-- keep-alive排除article -->
+        <keep-alive exclude="article">
+          <router-view>
+          </router-view>
+        </keep-alive>
       </transition>
     </div>
     <footer class="footer">
