@@ -4,10 +4,6 @@
       <Top></Top>
       <transition name="fade" mode="out-in">
         <!-- keep-alive排除article -->
-        <keep-alive exclude="article"> 
-          <router-view>
-          </router-view>
-        </keep-alive>
       </transition>
     </div>
     <footer class="footer">
@@ -35,21 +31,21 @@ export default {
   #app
     width 100%
     height 100%
-    
+
 	.fade-enter-active, .fade-leave-active
     transition all .2s ease
 
   .fade-enter, .fade-leave-active
-  	opacity 0 
-    
-  .wrap 
+  	opacity 0
+
+  .wrap
     min-height 100%
     margin-bottom -($footer-height)
   .wrap:after
     content ""
     display block
     height $footer-height
-  .footer 
+  .footer
     height $footer-height
     text-align center
     color $grey
@@ -60,7 +56,7 @@ export default {
       color $blue-link
       &:hover
         text-decoration underline
-  @media screen and (max-width: 850px) 
+  @media screen and (max-width: 850px)
     .fade-enter
       transform translate(30px, 0px)
 
