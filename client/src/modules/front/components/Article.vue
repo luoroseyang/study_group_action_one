@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Loading from 'publicComponents/loading.vue'
+import Loading from 'publicComponents/Loading.vue'
 import articleApi from 'api/article.js'
 import marked from 'lib/marked.js'
 import Side from './common/Side.vue'
