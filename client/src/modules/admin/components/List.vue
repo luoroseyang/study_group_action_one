@@ -1,15 +1,17 @@
 <template>
   <div class="list">
-    <div class="list__top-title">
-      <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;标签
+    <div class="list__top">
+      <div class="list__top-title">
+        <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;标签
+      </div>
+      <ul class="list__tag">
+        <li v-for="tag in tagList" @click="toggleSelectFn(tag.id)" class="list__tag__item" :class="{ 'list__tag__item--active': selectTagArr.includes(tag.id)}">
+          <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;
+          <span style="margin-right: 4px;">{{tag.name}}</span>
+          <i class="fa fa-trash-o" aria-hidden="true" @click.stop="deleteTagFn(tag.id)"></i>
+        </li>
+      </ul>
     </div>
-    <ul class="list__tag">
-      <li v-for="tag in tagList" @click="toggleSelectFn(tag.id)" class="list__tag__item" :class="{ 'list__tag__item--active': selectTagArr.includes(tag.id)}">
-        <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;
-        <span>{{tag.name}}</span>
-        <i class="fa fa-trash-o" aria-hidden="true" @click.stop="deleteTagFn(tag.id)"></i>
-      </li>
-    </ul>
     <ul class="list__article">
       <li @click="createArticle" class="list__article__button"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;新建文章</li>
       <li v-for="(article, index) in articleList" @click="switchArticle(index)" class="list__article__item" :class="{'list__article__item--active': currentArticle.index == index}">
@@ -27,8 +29,6 @@
     </ul>
   </div>
 </template>
-
-
 
 <script>
 import Pagination from 'publicComponents/Pagination.vue'
@@ -109,12 +109,7 @@ export default {
           console.log(err)
           this.$message.error(err.response.data.error)
         })
-      }).catch(() => {
-        // this.$message({
-        //   type: 'info',
-        //   message: '已取消删除'
-        // });
-      });
+      })
     },
     deleteTagFn(id) {
       this.$confirm('此操作将永久删除该标签, 是否继续?', '提示', {
@@ -122,29 +117,18 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.deleteTag({
-          id
-        }).then((res) => {
+        this.deleteTag({id}).then((res) => {
           if (res.data.success) {
             this.$message({
               message: '删除成功',
               type: 'success'
             });
-            // this.getAllArticles({
-            //   tag: this.selectTagArr
-            // })
           }
         }).catch((err) => {
           console.log(err)
           this.$message.error(err.response.data.error)
         })
-      }).catch(() => {
-        // this.$message({
-        //   type: 'info',
-        //   message: '已取消删除'
-        // });
-      });
-
+      })
     },
     changePage(cur) {
       this.getAllArticles({
@@ -155,14 +139,12 @@ export default {
       });
     }
   },
-
   mounted() {
     this.getAllArticles().then(res => {
       console.log("allPage:", this.allPage)
       console.log("curPage:", this.curPage)
     });
     this.getAllTags();
-
   },
   watch: {
     selectTagArr(val, oldVal) {
@@ -176,14 +158,16 @@ export default {
 }
 </script>
 
-
 <style lang="stylus" scoped>
 @import '../assets/stylus/_settings.styl'
 .list
   padding 15px
+  &__top
+    border 1px solid #333333
+    border-radius 4px
   &__top-title
     width 100%
-    font-size 25px
+    font-size 14px
     padding 10px
     color $blue
     span
@@ -214,10 +198,10 @@ export default {
     margin-top 5px
     list-style none
   &__article__item__title
-    font-size 22px
+    font-size 14px
   &__article__button
     padding 10px
-    font-size 25px
+    font-size 15px
     color $blue
     cursor pointer
   &__article__item
@@ -237,8 +221,8 @@ export default {
     text-align right
   &__article__item__abstract
     width 100%
-    max-height 50px   
-    word-wrap: break-word; 
+    max-height 50px
+    word-wrap: break-word;
     word-break all
   &__article__item__publish
     position absolute

@@ -1,14 +1,7 @@
 import Article from '../models/article.js'
-import md5 from "md5";
-import jwt from 'jsonwebtoken'
-import config from '../configs/'
 
 export async function createArticle(ctx) {
   const {title, content, abstract, publish, tags} = ctx.request.body;
-  // const content = ctx.request.body.content;
-  // const abstract = ctx.request.body.abstract;
-  // const publish = ctx.request.body.publish;
-  // const tags = ctx.request.body.tags;
   console.log(ctx.request.body);
   const createTime = new Date();
   const lastEditTime = new Date();
@@ -22,11 +15,7 @@ export async function createArticle(ctx) {
     ctx.throw(400, '摘要不能为空')
   }
   const article = new Article({
-    title,
-    content,
-    abstract,
-    publish,
-    tags,
+    ...ctx.request.body,
     createTime,
     lastEditTime
   });
@@ -35,15 +24,11 @@ export async function createArticle(ctx) {
   });
   await Article.populate(createResult, { path: 'tags' }, function(err, result) {
     createResult = result;
-    // console.log(result)
-
   });
-  console.log('文章创建成功');
   ctx.body = {
     success: true,
     article: createResult
   }
-
 }
 
 export async function getAllArticles(ctx) {

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Loading from 'publicComponents/Loading.vue'
+import Loading from 'publicComponents/loading.vue'
 import articleApi from 'api/article.js'
 import marked from 'lib/marked.js'
 import Side from './common/Side.vue'
@@ -124,7 +124,7 @@ export default {
     height 200px
     margin-left -(@width/2)+125
     margin-top  -(@height/2)+60
-@media screen and (max-width: 850px) 
+@media screen and (max-width: 850px)
   .article
     position relative
     margin-top 80px

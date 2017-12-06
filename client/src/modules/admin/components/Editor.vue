@@ -1,11 +1,8 @@
 <template>
   <div class="editor-box">
-    <p class="editor-box__title"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;请开始你的表演</p>
     <div class="editor-box__input-box">
       <label for="title">文章标题:</label>
       <input type="text" placeholder="文章标题" v-model="articleTitle" class="editor-box__input" id="title">
-    </div>
-    <div class="editor-box__input-box">
       <label for="title">添加标签:</label>
       <input type="text" placeholder="回车添加文章标签" v-model="articleTag" @keyup.enter="AddTag">
     </div>
@@ -301,20 +298,21 @@ export default {
 </style>
 <style lang="stylus" scoped>
   @import '../assets/stylus/_settings.styl'
-  .editor-box 
+  .editor-box
     position relative
     padding 15px
     input
       padding 7px
+      margin 0 10px
       background-color $grey-bg
-      width 350px
+      width 150px
     &__title
       font-size 25px
       color $blue
       padding 10px
     &__input-box
       font-size 17px
-      margin 15px 0    
+      margin 15px 0
     &__tagList
       list-style none
       overflow hidden
@@ -322,12 +320,14 @@ export default {
       li
         float left
         height 30px
+        color #fff
         line-height @height
-        margin-right 20px  
+        margin-right 20px
         verticle-align center
         text-algin center
         border-radius 5px
         padding 0 5px
+        background-color #0288d1
         cursor pointer
       li:hover
         background-color $grey-bg

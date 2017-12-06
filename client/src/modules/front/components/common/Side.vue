@@ -2,14 +2,9 @@
   <div class="sideBox">
     <div class="sideBox__mask" :class="{ 'sideBox__mask--show': sideBoxOpen}" @click="closeSideBox"></div>
     <div class="sideBox__main" :class="{ 'sideBox__main--open': sideBoxOpen}">
-      <img src="http://7xp9v5.com1.z0.glb.clouddn.com/touxiang.png" alt="" class="sideBox__img" @click="backToIndex">
-      <p class="sideBox__name">小深刻的秋鼠</p>
-      <p class="sideBox__motto">Love Life, Love sharing</p>
-      <ul class="sideBox__iconList">
-        <li v-for="icon in iconList" class="sideBox__iconItem">
-          <a :href="icon.href"><i class="iconfont" :class="'icon-'+icon.name"></i></a>
-        </li>
-      </ul>
+      <img src="" alt="" class="sideBox__img" @click="backToIndex">
+      <p class="sideBox__name">抱抱柚子</p>
+      <p class="sideBox__motto">Zhe shi ge sha ???</p>
       <ul class="sideBox__tagList" v-if="isInList">
         <li v-for="tag in tags" class="sideBox__tagItem" :class="{ 'sideBox__tagItem--active': (typeof selectTags.find(function(e){return e.id == tag.id}) !== 'undefined')}" @click="toggleSelectTags({id:tag.id, name:tag.name})">
           <span>{{tag.name}}</span>
@@ -43,11 +38,7 @@ export default {
       tagList: [],
       //selectTagArr: [],
       //sideBoxOpen: false,
-      scrollTop: 0,
-      iconList: [{
-        name: 'github',
-        href: 'https://github.com/BUPT-HJM'
-      }]
+      scrollTop: 0
     }
   },
   props: {
@@ -110,9 +101,7 @@ export default {
       if (document.documentElement) {　　　　
         documentScrollTop = document.documentElement.scrollTop;　　
       }　　
-      console.log(this.scrollTop)
       this.scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
-      // console.log(this.scrollTop) 
     },
     clearSelectTagArr() {
       this.setSelectTags([])
@@ -143,9 +132,6 @@ export default {
       margin-bottom 5px
     &__motto
       color $grey
-      margin-bottom 8px
-    &__iconList
-      list-style none
       margin-bottom 8px
     &__iconItem
       display inline-block
@@ -201,10 +187,10 @@ export default {
           word-wrap break-word
           word-break break-all
           &:hover
-            color $blue 
+            color $blue
             text-decoration underline
-      &__h1 
-        margin-left 0 
+      &__h1
+        margin-left 0
       &__h2
         margin-left 20px
       &__h3
@@ -212,21 +198,21 @@ export default {
       &__h4
         margin-left 60px
       &__h5
-        margin-left 80px 
+        margin-left 80px
       &__h6
         margin-left 100px
     &__mask
       display none
     .categoryBox--fixed
       position fixed
-      top 60px 
+      top 60px
       bottom 0
       overflow-y auto
-      width 250px     
-  @media screen and (max-width: 850px) 
+      width 250px
+  @media screen and (max-width: 850px)
     .sideBox
       position absolute
-      top 0 
+      top 0
       left 0
       &__main
         position fixed
@@ -270,4 +256,3 @@ export default {
 <style>
   @import '../../assets/iconfont/iconfont.css'
 </style>
-

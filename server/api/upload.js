@@ -9,7 +9,6 @@ export default function api() {
   const router = new Router({
     prefix: config.app.baseApi
   });
-  console.log(routes)
   Object.keys(routes).forEach(name => {
     return routes[name]['default'](router)
   });
