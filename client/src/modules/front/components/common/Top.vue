@@ -35,14 +35,12 @@ export default {
 <style lang="stylus" scoped>
   @import '../../assets/stylus/_settings.styl'
   .top-header
-    position fixed
-    top 0
     height 60px
     line-height @height
     width 100%
     box-shadow: 0 0 1px rgba(0,0,0,0.25);
     padding 0 40px 0 40px
-    background white
+    background rgba(0,0,0,0.4)
     z-index 3
     &__main-icon
       text-decoration none

@@ -1,33 +1,24 @@
 <template>
   <div class="list">
     <Side :isInList='true'></Side>
-    <div class="list__loading" v-if="isLoading">
-      <Loading :loadingMsg='loadingMsg'></Loading>
-    </div>
-    <ul class="list__article">
-      <li class="list__article__filterMsg" v-if="(selectTags.length !== 0)">
-        筛选
-        <span>{{filterMsg}}</span>
-        分类
-      </li>
-      <template v-if="posts.length!==0 && isLoading == false">
+    <div class="list__article">
+      <ul>
         <li v-for="(article, index) in posts" class="list__article__item">
           <h1 class="list__article__item__title"><router-link :to="'article/'+article.id">{{ article.title }}</router-link></h1>
           <div class="list__article__item__info">
             <p class="list__article__item__time">{{article.createTime}}</p>
             <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
-            <!-- <span v-for="tag in article.tags"> {{tag.name}}</span> -->
             <p>
               <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
             </p>
           </div>
         </li>
-        <Pagination :curPage='curPage' :allPage='allPage' @changePage='changePage'></Pagination>
-      </template>
+      </ul>
+      <Pagination :curPage='curPage' :allPage='allPage' @changePage='changePage'></Pagination>
       <div v-if="posts.length==0 && isLoading==false" class="msg-box">
         <p>暂时没有相关文章</p>
       </div>
-    </ul>
+    </div>
   </div>
 </template>
 
@@ -70,8 +61,7 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
-      loadingMsg: '加载中...'
+      isLoading: false
     }
   },
   created() {
@@ -124,17 +114,24 @@ export default {
 <style lang="stylus" scoped>
 @import '../assets/stylus/_settings.styl'
 .list
+  flex 1
   padding 10px
-  max-width 1000px
+  min-width 1200px
+  height 100%
   margin 0 auto
-  padding-top 85px
+  padding-top 10px
+  display: flex;
   &__article
-    list-style none
-    margin-left 260px
+    height 100%
+    flex 1
+    display flex
+    flex-direction column
+    justify-content space-between
   &__article__item
     margin 0 auto
     padding 0px 10px 10px 10px
     margin-bottom 15px
+    list-style none
 
   &__article__item__title
     font-size 24px

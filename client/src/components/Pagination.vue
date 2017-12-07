@@ -94,15 +94,23 @@ export default {
   list-style none
   margin 25px auto
   .pagination__button
-    flex 1
+    background-color #f3f4f5
+    height 28px
+    line-height 28px
+    min-width 30px
     text-align center
     color #0288D1
     cursor pointer
+    border-radius 2px
   .pagination__item
-    flex 1
     text-align center
+    height 28px
+    line-height 28px
+    min-width 30px
     cursor pointer
-    margin 0 10px
+    margin 0 5px
+    background-color #f3f4f5
+    border-radius 2px
     &:hover
       background-color #efefef
   .pagination__item--active

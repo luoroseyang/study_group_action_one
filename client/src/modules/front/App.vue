@@ -41,7 +41,9 @@ export default {
   	opacity 0
 
   .wrap
-    min-height 100%
+    height 100%
+    display flex
+    flex-direction column
     margin-bottom -($footer-height)
   .wrap:after
     content ""

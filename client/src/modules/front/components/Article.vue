@@ -103,11 +103,12 @@ export default {
 <style lang="stylus" scoped>
 @import '../assets/stylus/_settings.styl'
 .article
-  max-width 1000px
-  margin 85px auto 0 auto
+  max-width 1200px
+  margin 10px auto 0 auto
   padding 0 20px 0px 20px
+  display flex
   &__main
-    margin-left 260px
+    flex 1
     min-height 100%
   &__title
     font-size 24px
