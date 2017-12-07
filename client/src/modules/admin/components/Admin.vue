@@ -55,16 +55,15 @@ export default {
 <style lang="stylus" scoped>
 @import '../assets/stylus/_settings.styl'
 .admin
+  height 100%
+  display flex
+  flex-direction row
   &__list
-    position fixed 
-    left 0
-    top 0
-    bottom 0
-    width 500px
+    width 400px
     overflow-y auto
     overflow-x hidden
   &__editor
-    margin-left 500px
+    flex 1
   &__logout
     position absolute
     top 22px

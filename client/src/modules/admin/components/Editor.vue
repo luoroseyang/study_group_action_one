@@ -12,7 +12,7 @@
         <i class="fa fa-trash-o" aria-hidden="true" @click="deleteCurrentTag(index)"></i>
       </li>
     </ul>
-    <textarea id="editor"></textarea>
+    <textarea class="editor-box__editor" id="editor"></textarea>
     <div class="editor-box__button-box">
       <button @click="createArticle" v-if="currentArticle.id === -1">创建</button>
       <button @click="saveArticle({button: 'true'})" v-else>保存</button>
@@ -295,24 +295,35 @@ export default {
 
 <style lang="stylus">
   @import '../assets/stylus/preview.styl'
+  .editor-box .CodeMirror {
+    flex: 1;
+  }
 </style>
 <style lang="stylus" scoped>
   @import '../assets/stylus/_settings.styl'
   .editor-box
+    display flex
+    flex-direction column
     position relative
+    height 100%
     padding 15px
     input
       padding 7px
       margin 0 10px
       background-color $grey-bg
-      width 150px
+      flex 1
+      min-width 150px
+    label
+      line-height 37px
     &__title
       font-size 25px
       color $blue
       padding 10px
     &__input-box
+      display flex
+      justify-content space-between
       font-size 17px
-      margin 15px 0
+      margin 10px 50px 15px 0px
     &__tagList
       list-style none
       overflow hidden
@@ -332,7 +343,7 @@ export default {
       li:hover
         background-color $grey-bg
     &__button-box
-      float right
+      text-align right
       margin 10px
       button
         width 80px
