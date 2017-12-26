@@ -41,6 +41,10 @@ export default {
   display: flex;
   flex-direction: column;
 }
-
+@media screen and (max-width: 850px) {
+  .wrap {
+    height: auto;
+  }
+}
 
 </style>

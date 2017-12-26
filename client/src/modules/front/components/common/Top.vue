@@ -22,11 +22,11 @@ export default {
   line-height: 60px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
   padding: 0 40px 0 40px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(76, 144, 221, 0.4);
   z-index: 3;
   .top-header__main-icon {
     text-decoration: none;
-    color: blue;
+    color: #FFF;
     font-weight: 600;
     font-size: 20px;
   }
@@ -43,11 +43,7 @@ export default {
 
 @media screen and (max-width: 850px) {
   .top-header {
-    text-align: center;
-    padding: 0;
-    .top-header__menu-button {
-      display: block;
-    }
+    display:none;
   }
 }
 </style>

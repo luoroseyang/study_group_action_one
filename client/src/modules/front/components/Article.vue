@@ -101,11 +101,11 @@ export default {
   display: flex;
   width: 100%;
   height: 100%;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 auto;
   .article__main {
     width: 1000px;
-    padding: 22px;
+    padding: 0 22px;
     overflow-y: auto;
     .article__title {
       font-size: 24px;
