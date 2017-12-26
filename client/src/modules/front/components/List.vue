@@ -3,16 +3,15 @@
     <Side></Side>
     <div class="list__article">
       <ul class="list__article__ul">
-        <li v-for="article in posts" class="list__article__item" :key="article.id">
-          <h1 class="list__article__item__title"><router-link :to="'article/'+article.id">{{ article.title }}</router-link></h1>
-          <div class="list__article__item__info">
-            <p class="list__article__item__time">{{article.createTime}}</p>
-            <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
-            <p>
-              <router-link :to="'/article/'+article.id" class="continue-reading">继续阅读...</router-link>
-            </p>
-          </div>
-        </li>
+        <router-link v-for="article in posts" :key="article.id" :to="'/article/'+article.id" class="continue-reading">
+          <li class="list__article__item">
+            <h1 class="list__article__item__title">{{ article.title }}</h1>
+            <div class="list__article__item__info">
+              <p class="list__article__item__time">{{article.createTime}}</p>
+              <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
+            </div>
+          </li>
+        </router-link>
       </ul>
       <Pagination :curPage='curPage' :allPage='allPage' @changePage='changePage'></Pagination>
       <div v-if="posts.length==0 && isLoading==false" class="msg-box">
@@ -143,6 +142,7 @@ export default {
 
   .list__article__item__title {
     font-size: 24px;
+    margin: 10px 0;
     word-break: break-all;
     a {
       text-decoration: none;

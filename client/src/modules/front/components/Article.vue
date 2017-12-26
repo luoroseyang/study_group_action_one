@@ -14,29 +14,26 @@
 </template>
 
 <script>
-import Loading from 'publicComponents/Loading.vue'
-import articleApi from 'api/article.js'
-import marked from 'lib/marked.js'
-import Category from './common/Category.vue'
-import { mapGetters, mapActions } from 'vuex'
+import Loading from "publicComponents/Loading.vue";
+import articleApi from "api/article.js";
+import marked from "lib/marked.js";
+import Category from "./common/Category.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'article',
+  name: "article",
   computed: {},
   data() {
     return {
       category: [],
       isLoading: false,
-      loadingMsg: '加载中...'
-    }
+      loadingMsg: "加载中..."
+    };
   },
   computed: {
-    ...mapGetters([
-      'currentPost',
-      'currentPostCompile'
-    ]),
+    ...mapGetters(["currentPost", "currentPostCompile"]),
     compiledPost() {
-      return this.compiledMarkdown(this.$store.state.currentPost.content)
+      return this.compiledMarkdown(this.$store.state.currentPost.content);
     }
   },
   components: {
@@ -45,18 +42,20 @@ export default {
   },
   beforeMount() {
     // 如果想等说明数据已经拿到，就没必要进行再去取数据了
-    if(this.currentPost.id == this.$route.params.id) {
+    if (this.currentPost.id == this.$route.params.id) {
       this.$nextTick(() => {
         // 提取文章标签，生成目录
-        Array.from(this.$refs.post.querySelectorAll("h1,h2,h3,h4,h5,h6")).forEach((item, index) => {
-          item.id = item.localName + '-' + index;
+        Array.from(
+          this.$refs.post.querySelectorAll("h1,h2,h3,h4,h5,h6")
+        ).forEach((item, index) => {
+          item.id = item.localName + "-" + index;
           this.category.push({
             tagName: item.localName,
             text: item.innerText,
-            href: '#' + item.localName + '-' + index
-          })
-        })
-      })
+            href: "#" + item.localName + "-" + index
+          });
+        });
+      });
       return;
     }
     this.isLoading = true;
@@ -64,37 +63,42 @@ export default {
       this.isLoading = false;
       this.$nextTick(() => {
         // 提取文章标签，生成目录
-        Array.from(this.$refs.post.querySelectorAll("h1,h2,h3,h4,h5,h6")).forEach((item, index) => {
-          item.id = item.localName + '-' + index;
+        Array.from(
+          this.$refs.post.querySelectorAll("h1,h2,h3,h4,h5,h6")
+        ).forEach((item, index) => {
+          item.id = item.localName + "-" + index;
           this.category.push({
             tagName: item.localName,
             text: item.innerText,
-            href: '#' + item.localName + '-' + index
-          })
-        })
-      })
-    })
+            href: "#" + item.localName + "-" + index
+          });
+        });
+      });
+    });
   },
   preFetch(store) {
-    return store.dispatch('getPost',store.state.route.params.id)
+    return store.dispatch("getPost", store.state.route.params.id);
   },
   mounted() {
     //this.compiledPost = this.compiledMarkdown(this.currentPost.content)
     //this.isLoading = false
   },
   methods: {
-    ...mapActions([
-      'getPost'
-    ]),
+    ...mapActions(["getPost"]),
     compiledMarkdown(value) {
-      return marked(value)
+      return marked(value);
     }
   }
-}
+};
 </script>
 
 <style lang="less">
-  @import '../assets/style/markdown.less';
+@import "../assets/style/markdown.less";
+@media screen and (max-width: 850px) {
+  .wrap {
+    height: auto;
+  }
+}
 </style>
 <style lang="less" scoped>
 .article {
@@ -105,7 +109,7 @@ export default {
   margin: 0 auto;
   .article__main {
     width: 1000px;
-    padding: 0 22px;
+    padding: 22px;
     overflow-y: auto;
     .article__title {
       font-size: 24px;

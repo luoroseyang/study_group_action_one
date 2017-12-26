@@ -25,6 +25,11 @@ export default {
 <style lang="less">
 @import "assets/style/main.less";
 @import "assets/style/markdown.less";
+@import "assets/style/reset.less";
+
+#app {
+  height: 100%;
+}
 
 .fade-enter-active,
 .fade-leave-active {
@@ -41,10 +46,4 @@ export default {
   display: flex;
   flex-direction: column;
 }
-@media screen and (max-width: 850px) {
-  .wrap {
-    height: auto;
-  }
-}
-
 </style>

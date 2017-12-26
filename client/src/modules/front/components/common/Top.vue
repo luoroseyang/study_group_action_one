@@ -41,9 +41,9 @@ export default {
   }
 }
 
-@media screen and (max-width: 850px) {
-  .top-header {
-    display:none;
-  }
-}
+// @media screen and (max-width: 850px) {
+//   .top-header {
+//     display:none;
+//   }
+// }
 </style>
