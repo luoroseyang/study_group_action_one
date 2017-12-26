@@ -1,9 +1,9 @@
 <template>
   <div class="list">
-    <Side :isInList='true'></Side>
+    <Side></Side>
     <div class="list__article">
-      <ul>
-        <li v-for="(article, index) in posts" class="list__article__item">
+      <ul class="list__article__ul">
+        <li v-for="article in posts" class="list__article__item" :key="article.id">
           <h1 class="list__article__item__title"><router-link :to="'article/'+article.id">{{ article.title }}</router-link></h1>
           <div class="list__article__item__info">
             <p class="list__article__item__time">{{article.createTime}}</p>
@@ -29,10 +29,7 @@ import Side from './common/Side.vue'
 import articleApi from 'api/article.js'
 import marked from 'lib/marked.js'
 
-import {
-  mapGetters,
-  mapActions
-} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'list',
@@ -48,9 +45,7 @@ export default {
     ]),
     filterMsg() {
       let msg = ''
-      this.selectTags.forEach((item) => {
-        msg += item.name + '、'
-      })
+      this.selectTags.forEach(item => { msg += item.name + '、' })
       return msg.replace(/、$/, '')
     }
   },
@@ -111,89 +106,89 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-@import '../assets/stylus/_settings.styl'
-.list
-  flex 1
-  padding 10px
-  min-width 1200px
-  height 100%
-  margin 0 auto
-  padding-top 10px
+<style lang="less" scoped>
+.list {
+  flex: 1;
+  padding: 10px;
+  max-width: 1200px;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
   display: flex;
-  &__article
-    height 100%
-    flex 1
-    display flex
-    flex-direction column
-    justify-content space-between
-  &__article__item
-    margin 0 auto
-    padding 0px 10px 10px 10px
-    margin-bottom 15px
-    list-style none
+  .list__article {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
-  &__article__item__title
-    font-size 24px
-    word-break break-all
-    a
-      text-decoration none
-      color black
-  &__article__item__time
-    color #7f8c8d
-    font-weight 400
-    margin-bottom 10px
-    margin-top 2px
-  &__article__item__abstract
-    margin-bottom 5px
-  .continue-reading
-    text-decoration none
-    color #0366d6
-  &__article__filterMsg
-    font-size 20px
-    text-align center
-    span
-      color $blue
-  &__loading
-    position fixed
-    top 50%
-    left 50%
-    width 300px
-    height 200px
-    margin-left -(@width/2)+125
-    margin-top  -(@height/2)+60
-  .msg-box
-    position fixed
-    top 50%
-    left 50%
-    width 200px
-    height 200px
-    margin-left -(@width/2)+125
-    margin-top  -(@height/2)+60
-    text-align center
-    color #bfbfbf
+  .list__article__ul {
+    margin: 20px 0 0 0;
+    padding: 0;
+  }
+  
+  .list__article__item {
+    margin: 0 auto;
+    padding: 0px 30px 10px 30px;
+    margin-bottom: 15px;
+    list-style: none;
+    border-radius: 4px;
+    border: 1px solid #ebeef5;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  }
 
-@media screen and (max-width: 850px)
-  .list
-    position relative
-    padding-top 80px
-    &__article__item
-      margin-bottom 10px
-    &__article
-      margin-left 0
-    &__article__filterMsg
-      font-size 18px
-    .msg-box
-      position absolute
-      top 250px
-      left 50%
-      width 300px
-      margin-left -(@width/2)
-    &__loading
-      position absolute
-      top 250px
-      left 50%
-      width 300px
-      margin-left -(@width/2)
+  .list__article__item__title {
+    font-size: 24px;
+    word-break: break-all;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .list__article__item__time {
+    color: #7f8c8d;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-top: 2px;
+  }
+  .list__article__item__abstract {
+    margin-bottom: 5px;
+  }
+  .continue-reading {
+    text-decoration: none;
+    color: #0366d6;
+  }
+  .list__article__filterMsg {
+    font-size: 20px;
+    text-align: center;
+    span {
+      color: blue;
+    }
+  }
+  .list__loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 200px;
+    margin-left: 25px;
+    margin-top:  -90px;
+  }
+  .msg-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin-left: 25px;
+    margin-top:  -90px;
+    text-align: center;
+    color: #bfbfbf;
+  }
+}
 
 </style>

@@ -1,14 +1,8 @@
 <template>
   <ul class="pagination">
-    <li class="pagination__button" @click="prevPage">
-      <
-    </li>
-    <li class="pagination__item" v-for="page in pageArr" @click="switchPage(page)" :class="{'pagination__item--active':page==curPage}">
-      {{page}}
-    </li>
-    <li class="pagination__button" @click="nextPage">
-      >
-    </li>
+    <li class="pagination__button" @click="prevPage"><</li>
+    <li class="pagination__item" v-for="page in pageArr" @click="switchPage(page)" :class="{'pagination__item--active':page==curPage}" :key="page">{{page}}</li>
+    <li class="pagination__button" @click="nextPage">></li>
   </ul>
 </template>
 

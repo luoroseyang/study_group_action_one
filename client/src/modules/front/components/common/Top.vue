@@ -4,61 +4,50 @@
   </header>
 </template>
 <script>
-import {
-  mapActions,
-  mapMutations
-} from 'vuex'
 
 export default {
-  name: 'top-header',
+  name: "top-header",
   data() {
-    return {}
+    return {};
   },
-  created() {
-  },
+  created() {},
   methods: {
-    ...mapActions([
-      'getAllPosts'
-    ]),
-    ...mapMutations({
-      toggleSideBox: 'TOGGLE_SIDEBOX',
-      setSelectTags: 'SET_SELECT_TAGS'
-    }),
-    clearFilter() {
-      this.setSelectTags([])
-    }
   },
-  computed: {
+  computed: {}
+};
+</script>
+<style lang="less" scoped>
+.top-header {
+  height: 60px;
+  line-height: 60px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+  padding: 0 40px 0 40px;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 3;
+  .top-header__main-icon {
+    text-decoration: none;
+    color: blue;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .top-header__menu-button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+    display: none;
   }
 }
-</script>
-<style lang="stylus" scoped>
-  @import '../../assets/stylus/_settings.styl'
-  .top-header
-    height 60px
-    line-height @height
-    width 100%
-    box-shadow: 0 0 1px rgba(0,0,0,0.25);
-    padding 0 40px 0 40px
-    background rgba(0,0,0,0.4)
-    z-index 3
-    &__main-icon
-      text-decoration none
-      color $blue
-      font-weight 600
-      font-size 20px
-    &__menu-button
-      position absolute
-      left 10px
-      top 50%
-      width 32px
-      height 32px
-      margin-top -(@height/2)
-      display none
-  @media screen and (max-width: 850px)
-    .top-header
-      text-align center
-      padding 0
-      &__menu-button
-        display block
+
+@media screen and (max-width: 850px) {
+  .top-header {
+    text-align: center;
+    padding: 0;
+    .top-header__menu-button {
+      display: block;
+    }
+  }
+}
 </style>

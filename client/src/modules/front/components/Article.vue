@@ -3,7 +3,7 @@
     <div class="article__loading" v-if="isLoading">
       <Loading :loadingMsg='loadingMsg'></Loading>
     </div>
-    <Side :isInList='false' :category='category'></Side>
+    <Category class="article__side" :category='category'></Category>
     <div class="article__main" v-if="!isLoading">
       <h1 class="article__title">{{currentPost.title}}</h1>
       <p class="article__time">{{currentPost.createTime}}</p>
@@ -17,12 +17,8 @@
 import Loading from 'publicComponents/Loading.vue'
 import articleApi from 'api/article.js'
 import marked from 'lib/marked.js'
-import Side from './common/Side.vue'
-
-import {
-  mapGetters,
-  mapActions
-} from 'vuex'
+import Category from './common/Category.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'article',
@@ -44,7 +40,7 @@ export default {
     }
   },
   components: {
-    Side,
+    Category,
     Loading
   },
   beforeMount() {
@@ -97,44 +93,46 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-  @import '../assets/stylus/markdown.styl'
+<style lang="less">
+  @import '../assets/style/markdown.less';
 </style>
-<style lang="stylus" scoped>
-@import '../assets/stylus/_settings.styl'
-.article
-  max-width 1200px
-  margin 10px auto 0 auto
-  padding 0 20px 0px 20px
-  display flex
-  &__main
-    flex 1
-    min-height 100%
-  &__title
-    font-size 24px
-    word-break break-all
-  &__time
-    color #7f8c8d
-    font-weight 400
-    margin-bottom 10px
-  &__loading
-    position fixed
-    top 50%
-    left 50%
-    width 300px
-    height 200px
-    margin-left -(@width/2)+125
-    margin-top  -(@height/2)+60
-@media screen and (max-width: 850px)
-  .article
-    position relative
-    margin-top 80px
-    &__main
-      margin-left 0
-    &__loading
-      position absolute
-      top 200px
-      left 50%
-      width 300px
-      margin-left -(@width/2)
+<style lang="less" scoped>
+.article {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
+  .article__main {
+    width: 1000px;
+    padding: 22px;
+    overflow-y: auto;
+    .article__title {
+      font-size: 24px;
+      word-break: break-all;
+    }
+    .article__time {
+      color: #303133;
+      margin-bottom: 10px;
+    }
+  }
+  .article__side {
+    flex: 1;
+  }
+  .article__loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 200px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .article {
+    position: relative;
+    .article__side {
+      display: none;
+    }
+  }
+}
 </style>

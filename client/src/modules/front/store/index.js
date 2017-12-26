@@ -23,39 +23,38 @@ export function createStore() {
     },
 
     actions: {
-      getAllPosts({ commit, state }, { tag = '', page = 1, limit = 5 } = {}) {
-
+      getAllPosts({ commit, state }, { tag = '', page = 1, limit = 10 } = {}) {
         return articleApi.getAllPublishArticles(tag, page, limit).then(res => {
-          commit('GET_ALL_POSTS', { posts: res.data.articleArr || [], allPage: res.data.allPage, curPage: page });
+          commit('GET_ALL_POSTS', { posts: res.data.articleArr || [], allPage: res.data.allPage, curPage: page })
           return new Promise((resolve, reject) => {
-            resolve(res);
-          });
+            resolve(res)
+          })
         })
       },
       getAllTags({ commit, state }) {
         return tagApi.getAllTags().then(res => {
-          commit('GET_ALL_TAGS', res.data.tagArr);
+          commit('GET_ALL_TAGS', res.data.tagArr)
           return new Promise((resolve, reject) => {
-            resolve(res);
-          });
+            resolve(res)
+          })
         })
       },
       getPost({ commit, state }, id) {
         let article = state.posts.find((post) => post.id == id)
         if (!article && state.currentPost.id == id) {
-          article = state.currentPost;
+          article = state.currentPost
         }
         if (article && article.content) {
-          commit('GET_POST', article);
+          commit('GET_POST', article)
           return new Promise((resolve, reject) => {
-            resolve(article);
-          });
+            resolve(article)
+          })
         } else {
           return articleApi.getArticle(id).then(res => {
-            commit('GET_POST', res.data.article);
+            commit('GET_POST', res.data.article)
             return new Promise((resolve, reject) => {
-              resolve(res);
-            });
+              resolve(res)
+            })
           }).catch((err) => {
             //console.log(err)
           })
@@ -65,45 +64,35 @@ export function createStore() {
 
     mutations: {
       GET_ALL_POSTS: (state, { posts, allPage, curPage }) => {
-        if (isNaN(+allPage)) {
-          allPage = 0
-        }
-        if (isNaN(+curPage)) {
-          curPage = 0
-        }
-        state.posts = posts;
-        state.allPage = +allPage;
-        state.curPage = +curPage;
+        allPage = +allPage || 0
+        curPage = + curPage || 0
+        state.posts = posts
+        state.allPage = +allPage
+        state.curPage = +curPage
       },
       GET_ALL_TAGS: (state, tags) => {
-        state.tags = tags;
+        state.tags = tags
       },
       SET_SELECT_TAGS: (state, tags) => {
-        state.selectTags = tags;
+        state.selectTags = tags
       },
       TOGGLE_SELECT_TAGS: (state, { id, name }) => {
-        if (typeof state.selectTags.find(function(e) {
-            return e.id == id
-          }) == 'undefined') {
-          state.selectTags.push({
-            id,
-            name
-          })
+        state.selectTags = []
+        if (typeof state.selectTags.find(e => e.id == id) == 'undefined') {
+          state.selectTags.push({ id, name})
         } else {
-          state.selectTags = state.selectTags.filter((e) => {
-            return e.id !== id;
-          })
+          state.selectTags = state.selectTags.filter(e => e.id !== id)
         }
       },
       TOGGLE_SIDEBOX: (state) => {
-        state.sideBoxOpen = !state.sideBoxOpen;
+        state.sideBoxOpen = !state.sideBoxOpen
       },
       CLOSE_SIDEBOX: (state) => {
-        state.sideBoxOpen = false;
+        state.sideBoxOpen = false
       },
       GET_POST: (state, article) => {
-        state.currentPost = article;
-        state.currentPostCompile = marked(state.currentPost.content);
+        state.currentPost = article
+        state.currentPostCompile = marked(state.currentPost.content)
       },
     },
     getters: {
