@@ -34,6 +34,7 @@ export default {
   height: 100%;
   overflow-y: auto;
   max-width: 300px;
+  margin-top: 30px;
   text-align: left;
   .categoryBox {
     padding-left: 20px;

@@ -63,7 +63,6 @@ export default {
   beforeMount() {
     // 用来判断是否有数据，有数据就不再请求了
     if(this.currentPost.id == '') {
-      // 这句话说明不是从文章详细页过来的
       return;
     }
     this.isLoading = true;
@@ -110,9 +109,9 @@ export default {
   flex: 1;
   padding: 10px;
   max-width: 1200px;
-  width: 90%;
+  width: 96%;
   height: 100%;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   padding-top: 10px;
   display: flex;
   .list__article {
