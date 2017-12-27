@@ -1,5 +1,5 @@
 <template>
-  <div class="sideBox">
+  <div class="sideBox" v-show="category.length">
     <div class="categoryBox" ref="categoryBox">
       <ul class="categoryBox__list">
         <li v-for="item in category" :class="'categoryBox__'+item.tagName" :key="item.id">

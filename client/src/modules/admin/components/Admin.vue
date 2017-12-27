@@ -28,9 +28,6 @@ export default {
   data() {
     return {}
   },
-  created() {
-
-  },
   methods: {
     ...mapMutations({
       deleteToken: 'DELETE_TOKEN'

@@ -1,5 +1,6 @@
 <template>
   <div class="list">
+    <my-canvas :type="1"></my-canvas>
     <Side></Side>
     <div class="list__article">
       <ul class="list__article__ul">
@@ -25,6 +26,7 @@
 import Pagination from 'publicComponents/Pagination.vue'
 import Loading from 'publicComponents/Loading.vue'
 import Side from './common/Side.vue'
+import myCanvas from './canvas/index.vue'
 import articleApi from 'api/article.js'
 import marked from 'lib/marked.js'
 
@@ -51,14 +53,13 @@ export default {
   components: {
     Pagination,
     Side,
-    Loading
+    Loading,
+    myCanvas
   },
   data() {
     return {
       isLoading: false
     }
-  },
-  created() {
   },
   beforeMount() {
     // 用来判断是否有数据，有数据就不再请求了
@@ -137,6 +138,9 @@ export default {
     background-color: #fff;
     overflow: hidden;
     box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    &:hover {
+      background-color: rgba(76,144,221,.4);
+    }
   }
 
   .list__article__item__title {

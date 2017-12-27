@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const List = resolve => require(['../components/List.vue'], resolve)
+const Canvas = resolve => require(['../components/canvas/index.vue'], resolve)
 const Article = resolve => require(['../components/Article.vue'], resolve)
 
 export function createRouter() {
@@ -23,6 +24,7 @@ export function createRouter() {
       { path: '/', component: List },
       { path: '/article/:id', component: Article, meta: { scrollToTop: true } },
       { path: '/page/:page', component: List },
+      { path: '/canvas/:id', component: Canvas },
       { path: '*', redirect: '/' }
     ]
   })

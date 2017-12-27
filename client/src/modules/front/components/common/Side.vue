@@ -116,6 +116,7 @@ export default {
     border: 1px solid #dcdfe6;
     white-space: nowrap;
     &:hover {
+      user-select: none;
       background-color: #409eff;
       color: #fff;
     }
