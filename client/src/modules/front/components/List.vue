@@ -8,7 +8,6 @@
           <li class="list__article__item">
             <h1 class="list__article__item__title">{{ article.title }}</h1>
             <div class="list__article__item__info">
-              <p class="list__article__item__time">{{article.createTime}}</p>
               <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
             </div>
           </li>

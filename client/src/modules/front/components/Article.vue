@@ -6,7 +6,6 @@
     <Category class="article__side" :category='category'></Category>
     <div class="article__main" v-if="!isLoading">
       <h1 class="article__title">{{currentPost.title}}</h1>
-      <p class="article__time">{{currentPost.createTime}}</p>
       <div class="article__content markdown-body" v-html="currentPostCompile" ref="post">
       </div>
     </div>

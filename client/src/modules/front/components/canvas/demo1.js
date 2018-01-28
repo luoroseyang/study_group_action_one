@@ -1,7 +1,7 @@
 export default function () {
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#FF0000";
+  ctx.fillStyle = "#409eff";
   ctx.fillRect(0, 0, 150, 75);
 
   resize();
@@ -38,7 +38,7 @@ export default function () {
   // 添加粒子
   // x，y为粒子坐标，xa, ya为粒子xy轴加速度，max为连线的最大距离
   var dots = [];
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 50; i++) {
     var x = Math.random() * canvas.width;
     var y = Math.random() * canvas.height;
     var xa = Math.random() * 2 - 1;
