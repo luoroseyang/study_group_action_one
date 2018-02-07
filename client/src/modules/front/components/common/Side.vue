@@ -64,6 +64,8 @@ export default {
 <style lang="less" scoped>
 .sideBox {
   height: 100%;
+  width: 20%;
+  min-width: 200px;
   margin-right:20px;
   float: left;
   text-align: center;
@@ -107,6 +109,7 @@ export default {
     display: inline-block;
     padding: 0 10px;
     margin-left: 10px;
+    margin-bottom: 10px;
     height: 32px;
     line-height: 30px;
     font-size: 12px;
