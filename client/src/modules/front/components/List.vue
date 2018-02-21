@@ -118,6 +118,8 @@ export default {
   display: flex;
   .list__article {
     height: 100%;
+    overflow: auto;
+    padding-right: 10px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -137,7 +139,7 @@ export default {
     list-style: none;
     border-radius: 4px;
     border: 1px solid #ebeef5;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255,255,255,.7);
     overflow: hidden;
   }
 

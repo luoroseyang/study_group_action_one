@@ -107,7 +107,7 @@ export default {
   }
   .sideBox__tagList {
     list-style: none;
-    padding: 10px;
+    padding: 10px 10px 0 0;
   }
   .sideBox__tagItem {
     background-color: #fff;
