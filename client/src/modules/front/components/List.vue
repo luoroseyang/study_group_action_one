@@ -5,10 +5,12 @@
     <div class="list__article">
       <ul class="list__article__ul">
         <router-link v-for="article in posts" :key="article.id" :to="'/article/'+article.id" class="continue-reading">
-          <li class="list__article__item">
-            <h1 class="list__article__item__title">{{ article.title }}</h1>
-            <div class="list__article__item__info">
-              <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
+          <li class="list__article__item wrap-card">
+            <div class="card">
+              <h1 class="list__article__item__title">{{ article.title }}</h1>
+              <div class="list__article__item__info">
+                <div class="list__article__item__abstract markdown-body" v-html="compiledMarkdown(article.abstract)"></div>
+              </div>
             </div>
           </li>
         </router-link>
@@ -110,7 +112,7 @@ export default {
   padding: 10px;
   max-width: 1200px;
   width: 96%;
-  height: 100%;
+  // height: 100%;
   margin: 0 auto 20px;
   padding-top: 10px;
   display: flex;
@@ -128,18 +130,15 @@ export default {
   }
   
   .list__article__item {
+    position: relative;
     margin: 0 auto;
     padding: 0px 30px 10px 30px;
     margin-bottom: 15px;
     list-style: none;
     border-radius: 4px;
     border: 1px solid #ebeef5;
-    background-color: #fff;
+    background-color: rgba(255,255,255,.5);
     overflow: hidden;
-    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
-    &:hover {
-      background-color: rgba(76,144,221,.4);
-    }
   }
 
   .list__article__item__title {
@@ -193,4 +192,59 @@ export default {
   }
 }
 
+.wrap-card:before,
+.wrap-card:after {
+  display: inline-block;
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 3px;
+  background: rgb(195, 194, 194);
+  transform: scaleX(0);
+  transition: all 0.5s ease;
+}
+.wrap-card:before {
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+.wrap-card:after {
+  bottom: 0;
+  left: 0;
+  transform-origin: 100% 0;
+}
+.wrap-card:hover {
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  transform: translateY(0px) translateX(0px);
+}
+.wrap-card:hover:after,
+.wrap-card:hover:before {
+  transform: scaleX(1);
+}
+
+.card:before,
+.card:after {
+  display: inline-block;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  height: 100%;
+  background: rgb(195, 194, 194);
+  transform: scaleY(0);
+  transition: all 0.2s ease 0.5s;
+}
+.card:before {
+  top: 0;
+  left: 0;
+  transform-origin: 0 100%;
+}
+.card:after {
+  top: 0;
+  right: 0;
+  transform-origin: 0 0;
+}
+.card:hover:after,
+.card:hover:before {
+  transform: scaleY(1);
+}
 </style>

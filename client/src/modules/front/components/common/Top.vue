@@ -18,15 +18,15 @@ export default {
 </script>
 <style lang="less" scoped>
 .top-header {
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
   padding: 0 40px 0 40px;
-  background: rgba(76, 144, 221, 0.4);
+  background: rgba(255, 255, 255, 0.25);
   z-index: 3;
   .top-header__main-icon {
     text-decoration: none;
-    color: #FFF;
+    color: #818181;
     font-weight: 600;
     font-size: 20px;
   }

@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <div class="wrap">
-      <Top></Top>
-      <transition name="fade" mode="out-in">
-        <keep-alive exclude="article">
-          <router-view></router-view>
-        </keep-alive>
-      </transition>
+      <div class="container">
+        <Top></Top>
+        <transition name="fade" mode="out-in">
+          <keep-alive exclude="article">
+            <router-view></router-view>
+          </keep-alive>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -45,5 +47,17 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+.container {
+  background: url(https://s10.mogucdn.com/mlcdn/c45406/180220_18ij4b1a5ldb75lbk0ihfh3kb2d37_2000x1125.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 </style>

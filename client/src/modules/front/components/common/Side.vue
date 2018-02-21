@@ -69,6 +69,11 @@ export default {
   margin-right:20px;
   float: left;
   text-align: center;
+  .sideBox__main {
+    margin: 20px 0 0 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+  }
   .sideBox__img {
     width: 150px;
     border-radius: 50%;
@@ -77,13 +82,13 @@ export default {
     cursor: pointer;
   }
   .sideBox__name {
-    color: grey;
+    color: #000;
     font-size: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
   }
   .sideBox__motto {
-    color: grey;
+    color: #333333;
     margin-bottom: 8px;
   }
   .sideBox__iconItem {
@@ -91,7 +96,7 @@ export default {
     cursor: pointer;
     a {
       text-decoration: none;
-      color: grey;
+      color: #333333;
       .iconfont {
         font-size: 28px;
         &:hover {
