@@ -103,6 +103,7 @@ export default {
 .article {
   display: flex;
   width: 100%;
+  background-color: #fff;
   height: 100%;
   justify-content: center;
   margin: 0 auto;
